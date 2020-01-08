@@ -4,14 +4,15 @@
 #
 Name     : perl-Carp-Assert-More
 Version  : 1.20
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Carp-Assert-More-1.20.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Carp-Assert-More-1.20.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libc/libcarp-assert-more-perl/libcarp-assert-more-perl_1.16-1.debian.tar.xz
-Summary  : convenience wrappers around Carp::Assert
+Summary  : unknown
 Group    : Development/Tools
 License  : Artistic-2.0
 Requires: perl-Carp-Assert-More-license = %{version}-%{release}
+Requires: perl-Carp-Assert-More-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Carp::Assert)
 BuildRequires : perl(Sub::Uplevel)
@@ -26,7 +27,6 @@ Summary: dev components for the perl-Carp-Assert-More package.
 Group: Development
 Provides: perl-Carp-Assert-More-devel = %{version}-%{release}
 Requires: perl-Carp-Assert-More = %{version}-%{release}
-Requires: perl-Carp-Assert-More = %{version}-%{release}
 
 %description dev
 dev components for the perl-Carp-Assert-More package.
@@ -40,12 +40,22 @@ Group: Default
 license components for the perl-Carp-Assert-More package.
 
 
+%package perl
+Summary: perl components for the perl-Carp-Assert-More package.
+Group: Default
+Requires: perl-Carp-Assert-More = %{version}-%{release}
+
+%description perl
+perl components for the perl-Carp-Assert-More package.
+
+
 %prep
 %setup -q -n Carp-Assert-More-1.20
-cd ..
-%setup -q -T -D -n Carp-Assert-More-1.20 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libcarp-assert-more-perl_1.16-1.debian.tar.xz
+cd %{_builddir}/Carp-Assert-More-1.20
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Carp-Assert-More-1.20/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/Carp-Assert-More-1.20/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -70,7 +80,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Carp-Assert-More
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Carp-Assert-More/deblicense_copyright
+cp %{_builddir}/Carp-Assert-More-1.20/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Carp-Assert-More/1c54c26afbf89c84daacb0c7815c9c47d5a3918c
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -83,7 +93,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Carp/Assert/More.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -91,4 +100,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Carp-Assert-More/deblicense_copyright
+/usr/share/package-licenses/perl-Carp-Assert-More/1c54c26afbf89c84daacb0c7815c9c47d5a3918c
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Carp/Assert/More.pm
