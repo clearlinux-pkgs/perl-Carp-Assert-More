@@ -4,7 +4,7 @@
 #
 Name     : perl-Carp-Assert-More
 Version  : 1.20
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Carp-Assert-More-1.20.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Carp-Assert-More-1.20.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libc/libcarp-assert-more-perl/libcarp-assert-more-perl_1.16-1.debian.tar.xz
@@ -80,7 +80,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Carp-Assert-More
-cp %{_builddir}/Carp-Assert-More-1.20/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Carp-Assert-More/1c54c26afbf89c84daacb0c7815c9c47d5a3918c
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Carp-Assert-More/1c54c26afbf89c84daacb0c7815c9c47d5a3918c
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -104,4 +104,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Carp/Assert/More.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Carp/Assert/More.pm
