@@ -4,7 +4,7 @@
 #
 Name     : perl-Carp-Assert-More
 Version  : 1.26
-Release  : 16
+Release  : 17
 URL      : https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Carp-Assert-More-1.26.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Carp-Assert-More-1.26.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libc/libcarp-assert-more-perl/libcarp-assert-more-perl_1.16-1.debian.tar.xz
@@ -104,4 +104,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.3/Carp/Assert/More.pm
+/usr/lib/perl5/vendor_perl/5.32.1/Carp/Assert/More.pm
