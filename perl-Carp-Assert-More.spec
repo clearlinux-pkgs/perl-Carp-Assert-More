@@ -7,7 +7,7 @@
 #
 Name     : perl-Carp-Assert-More
 Version  : 2.4.0
-Release  : 31
+Release  : 32
 URL      : https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Carp-Assert-More-2.4.0.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Carp-Assert-More-2.4.0.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libc/libcarp-assert-more-perl/libcarp-assert-more-perl_1.16-1.debian.tar.xz
